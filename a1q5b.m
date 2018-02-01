@@ -55,7 +55,7 @@ function W_out = fixedDividend(W, S, D)
  end
 function W_out = proporDividend(W, S, rho)
 	S_min = min(S);
-	S_ex = S - S * rho;
+	S_ex = S - S .* rho;
 	S_ex = max(S_ex, S_min);
 	W_out = interp1(S, W, S_ex);
 end

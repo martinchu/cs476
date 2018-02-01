@@ -24,7 +24,7 @@
  p = (a - d)/(u - d);
 
  W = S0*d.^([Nsteps:-1:0]').*u.^([0:Nsteps]');
- if(opttype == 0)
+if(opttype == 0)
 	 W = max(W-K, 0)
  else
 	 W = max(K-W, 0)
