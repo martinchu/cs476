@@ -26,7 +26,7 @@
  a = exp(r*delt);
  p = (a - d)/(u - d);
 
- W = S0*d.^([Nsteps:-1:0]').*u.^([0:Nsteps]');
+ W = S0*u.^([Nsteps:-1:0]').*d.^([0:Nsteps]');
 
  if(opttype == 0)
  	 W = max(W-K, 0)
@@ -35,7 +35,7 @@
   end
 for i=Nsteps:-1:1
 	if(i == td1/delt || i == td2/delt)
-		S = S0*d.^([i:-1:0]').*u.^([0:i]');
+		S = S0*u.^([i:-1:0]').*d.^([0:i]');
 		if(i==td1/delt)
 			W = proporDividend(W, S, rho)
 		else
