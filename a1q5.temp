@@ -1,0 +1,20 @@
+
+%{ if(opttype == 0)
+	 W = max(W-K, 0)
+ else
+	 W = max(K-W, 0)
+ end
+
+ for i=Nsteps:-1:1
+	 if(i==td1/delt)
+		 W = exp(-r*delt)*((p*W(2:i+1)+(1-p)*W(1:i))* (1 - priori))
+	 elseif(i==td2/delt)
+		 W = exp(-r*delt)*((p*W(2:i+1)+(1-p)*W(1:i)) - D)
+	 else
+		 W = exp(-r*delt)*(p*W(2:i+1) + (1-p)*W(1:i));
+ end
+ 
+ value = W(1);
+
+ disp(sprintf('Tree Value: %.9g \n',value));
+%}
